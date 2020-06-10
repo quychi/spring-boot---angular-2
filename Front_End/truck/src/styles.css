@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ng-pick-datetime/assets/style/picker.min.css";/*for datetime pick in index.html*/
+
+
+
+body{
+    background: #f6fcff url(/assets/img/bg2.png) !important;
+    scroll-behavior: smooth;
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    height: 100%; 
+  }
+  footer{
+    background: #000 url(/assets/img/bg2.png) center bottom no-repeat !important;
+  }
+
+  

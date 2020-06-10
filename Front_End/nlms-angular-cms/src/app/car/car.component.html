@@ -1,0 +1,211 @@
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h2>Car <b>Management</b></h2>
+                </div>
+                <div class="col-sm-7">
+
+                    <div class="col-xs-7">
+                        <input class="form-control" id="ex2" type="text" placeholder="Search" [(ngModel)]="searchName">
+                    </div>
+                    
+                    <a (click)="onSubmit($event); btnFix = false;" class="btn btn-primary mr"><i class="fas fa-plus-circle"></i> <span> <b>Thêm mới</b> </span></a> 
+                    <!-- <button class="btn aqua-gradient btn-rounded b" type="submit">Search</button>						 -->
+                </div>
+            </div>
+        </div>
+<div *ngIf="!submitted"> 		
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Lái xe</th>
+                    <th>Tạo bởi</th>
+                    <th>Ảnh</th>
+                    <th>Mô tả</th>
+                    <th>Giá</th>
+                    <th>Giá/Km</th>
+                    <th>Thiết lập</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of dataArr |filterCourse   :searchName" (click)="onSend(list.id);">
+                    <td>{{list.id}}</td>
+                    <td>{{list.driver.username}}</td>
+                    <td>{{list.createdByUser}}</td>
+                    <td><a (click)="open(content)">
+                        <img src="{{list.imgUrl}}"
+                     style="height: 43px;" class="avatar" alt="Avatar">{{list.CategoryId}}</a></td>
+                    <td>{{list.description}}</td>
+                    <td>{{list.price}}</td>
+                    <td>{{list.pricePerKm}}</td>
+                    <td>
+                        <a (click)="onSetting(list); btnFix = true;" class="edit" title="Edit" data-toggle="tooltip">
+                            <i class="fas fa-pen"></i>
+                        </a>
+
+                        <a (click)="car = list;" class="settings" title="Delete" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Do you want to delete it?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">Select "delete" below if you are ready to delete your item.</div>
+                          <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal" (click)="onDelete(car);">Delete</button>
+                          </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <ng-template #content let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title">{{list.name}}</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="row justify-content-center">
+
+                                            <div class="my-4"> <img alt="User Pic" src={{list.imgUrl}} style="height: 170px;
+                                                width: 338px;"
+                                                class="img-circle img-responsive"></div>
+                                        <table class="table table-user-information ">
+                                                
+                                            <tbody>
+                                                
+                                                <tr>
+                                                    <td >Driver By User:</td>
+                                                    <td>{{list.driver.username}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >Created By User:</td>
+                                                    <td>{{list.createdByUser}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >Description:</td>
+                                                    <td>{{list.description}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >Price:</td>
+                                                    <td>{{list.price}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >Price per km:</td>
+                                                    <td>{{list.pricePerKm}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                        </div>
+                    </ng-template>
+
+                </tr>
+                
+            </tbody>
+        </table>
+        <div class="clearfix">
+            <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+            <ul class="pagination">
+                <li class="page-item disabled"><a href="#">Previous</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+            </ul>
+        </div>
+    </div>
+<div *ngIf="submitted">
+    <form>
+
+    <div class="controls">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="form_name">Driver code</label>
+                <input id="form_name" type="text" name="driverId" class="form-control" placeholder="Enter dirver's user id"
+                    required data-error="Img is required." [(ngModel)]="driverId">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="form_name">Img</label>
+                <input id="form_name" type="text" name="img_url" class="form-control" placeholder="Enter image"
+                    required data-error="Img is required." [(ngModel)]="car.imgUrl">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="form_name">Description</label>
+                <textarea id="form_name" cols="78" rows="10" type="text" name="description" class="form-control"
+                    placeholder="Enter description" required data-error="Description is required."
+                    [(ngModel)]="car.description"></textarea>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="form_name">Price</label>
+                <input id="form_name" type="text" name="price" class="form-control" placeholder="Enter Price"
+                    required data-error="Price is required." [(ngModel)]="car.price">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="form_name">Price per km</label>
+                <input id="form_name" type="text" name="PerKm" class="form-control" placeholder="Enter price per km" required
+                    data-error="Price per km is required." [(ngModel)]="car.pricePerKm">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+                <div class="form-group">
+                    <label for="form_name">Category</label>
+                    <form [formGroup]="myCategoryForm">
+
+                        <select class="custom-select" (change)="changeCategory($event)" formControlName="idCategoryCar">
+                        <option value="" disabled>Choose one category</option>
+                        <option value="3">Motorcycle</option>
+                        <option value="0">Pickup</option>
+                        <option value="1">Van</option>
+                        <option value="2">Truck</option>
+                        </select>
+                        <!-- error block -->
+                        <!-- <div class="invalid-feedback" *ngIf="isSubmitted && idCategoryCar.errors?.required">
+                            <sup>*</sup>Please enter your city name
+                        </div> -->
+                    </form>
+                </div>
+            </div>
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-success btn-send" [hidden]="btnFix" (click)="onClick(car)" value="+Add">
+            <input type="submit" class="btn btn-success btn-send" [hidden]="!btnFix" (click)="onClickFix(car)" value="~Fix">
+            <input type="submit" class="btn btn-default" (click)="onBack($event)" value="Close">
+        </div>
+    </div>
+</form>
+</div>
+
+</div>	
+</div>

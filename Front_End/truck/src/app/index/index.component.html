@@ -1,0 +1,206 @@
+<ngx-spinner>
+    <p style="color: white">Loading...</p>
+</ngx-spinner>
+
+<app-header></app-header>
+<app-slider></app-slider>
+
+
+<!-- banner 1 "Lí do lựa chọn TruckLogistics" -->
+<div class="block banner__block">
+    <div class="block-content">
+        <div class="container">
+            <h3 class="block-title"><span>Why us</span></h3>
+            <div class="row">
+                <div class="col-4">
+                    <div class="icon-box"><img src="/assets/img/dollar.svg" alt="[object Object]">
+                        <h4 class="title"><span>Good price</span></h4>
+                        <p class="desc"><span>Super discount for shared services<br>Price comparison among operators</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="icon-box"><img src="/assets/img/happy_face.svg" alt="[object Object]">
+                        <h4 class="title"><span>Quality guarantee</span></h4>
+                        <p class="desc"><span>Compensation if driver late<br>Return money for bad service</span></p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="icon-box"><img src="/assets/img/co2.svg" alt="[object Object]">
+                        <h4 class="title"><span>Reduce carbon footprint</span></h4>
+                        <p class="desc"><span>Save money, save Earth<br>Practice green living</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="main">
+        <div class="slider-area" id="slider-area" style="background-image: url(assets/img/image.jpg);
+                                    background-size: 100% 100%; background-repeat: no-repeat;    ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="mainSlider">
+                            <h1 class="title">
+                                <span>Comfortable like private car
+                                    <br>
+                                    at the price of bus
+                                </span>
+                            </h1>
+                            <h4 class="sub-title">
+                                <span>Book vehicle and long-distance transfer with super affordable rate</span>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <!-- <div class="tab-forms">					chua lam tab thue theo gio, yeu cau dac biet
+                            <div class="tab-content">
+                                <div class="tab-pane active"> -->
+                                    <div class="booking-form">
+                                        <div class="form_group">
+                                            <div class="address__input">
+                                                <label style="padding-bottom: 6px;"><b>Enter pick up point</b></label>
+                                                <div class="pick-drop-container">
+                                                    <div class="address-input">
+                                                        <svg class="jss1 location-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                                        </svg>
+                                                        <!-- <div class="form-group"> -->
+                                                            <input class="form-control" #search [formControl]="searchControl" type="text" autocorrect="off"
+                                                                autocapitalize="off" spellcheck="off">
+                                                                
+                                                        <!-- </div> -->
+                                                    </div>
+                                                </div>
+                                                <label style="padding-bottom: 6px;"><b>Enter drop off point</b></label>
+                                                <div class="pick-drop-container">
+                                                    <div class="address-input">
+                                                        <svg class="jss1 location-icon drop" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                                        </svg>
+                                                        <!-- <div class="form-group"> -->
+                                                            <input class="form-control" #search2 [formControl]="search2Control" type="text" autocorrect="off"
+                                                                autocapitalize="off" spellcheck="off">
+                                                                
+                                                        <!-- </div> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="form-group d-flex">
+                                        <div class="datetime">
+                                            <b>Pick up datetime</b>
+                                            <div style="padding-top: 16px;">
+                                                <input [owlDateTime]="dt2" placeholder="Enter datetime" [(ngModel)]="ngay">
+                                                    <span [owlDateTimeTrigger]="dt2"><i class="fa fa-calendar"></i></span>
+                                                <owl-date-time #dt2></owl-date-time>
+                                            </div>
+                                        </div>
+  
+                                        <div class="chair">
+                                                    <b>Vehicle type</b>
+                                                <mat-form-field>
+                                                    <mat-select placeholder="Choose vehicle type" [(ngModel)] = "loaixe" >
+                                                       <mat-option [value] = "3">Motorcycle</mat-option>
+                                                       <mat-option [value] = "0">Pickup</mat-option>
+                                                       <mat-option [value] = "1">Van</mat-option>
+                                                       <mat-option [value] = "2">Truck</mat-option>
+                                                    </mat-select>
+                                                 </mat-form-field>
+                                        </div>
+                                    </div>
+  
+                                    <div class="submit-button">
+                                        <button class="btn-dc full 2x" (click)="onClickXemGia()"  style="text-align: center; border: none; outline: none;">
+                                            <span>SEARCH</span>
+                                        </button>
+                                    </div>
+                                                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+  <!--   			</div>
+            </div>
+        </div> -->
+
+<!-- banner 2 "Tác động xã hội" -->
+        <div class="blockForBanner2 b-benefit">
+            <div class="container">
+                <div class="block-header">
+                    <h2 class="block-title text-center"><span>Impact environmental</span></h2>
+                </div>
+                <div class="block-content">
+                    <div class="row">
+                        <div class="item col-sm-4">
+                            <div class="wrap"><img src="/assets/img/co2.svg" alt="CO₂ giảm thải môi trường">
+                                <h3>2.34 <span>thousand tons</span></h3>
+                                <p><span>CO₂ emission saving</span></p>
+                            </div>
+                        </div>
+                        <div class="item col-sm-4">
+                            <div class="wrap"><img src="/assets/img/happy_face.svg" alt="Chuyến đi thành công">
+                                <h3>1.22 <span>millions</span></h3>
+                                <p><span>Happy trips</span></p>
+                            </div>
+                        </div>
+                        <div class="item col-sm-4">
+                            <div class="wrap"><img src="/assets/img/dollar.svg" alt="Tiết kiệm cho khách hàng">
+                                <h3>26.05 <span>billions</span> VND</h3>
+                                <p><span>Money saving for passengers</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<!-- top categories -->
+<div class="row my-5">
+    <div class="col-lg-12 my-2 ">
+        <h4></h4>
+        <div class="ct-area vc_separator ">
+            <span class="vc_sep_holder vc_sep_holder_l">
+                <span class="vc_sep_line"></span>
+            </span>
+            <h4 class="heading_font">Top Categories</h4>
+            <span class="vc_sep_holder vc_sep_holder_r">
+                <span class="vc_sep_line"></span>
+            </span>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 my-2" *ngFor="let category of featuredCategory">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="panel-index">
+                    <span class="{{category.icon}} panel-index-icon"></span>
+                    <div class="panel-index-text">{{category.name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- logo commite -->
+<div class="row">
+    <div class="logo-banner">
+        <ul>
+            <li><img src="/assets/img/logo-banner1.png"></li>
+            <li><img src="/assets/img/logo-banner2.png"></li>
+            <li><img src="/assets/img/logo-banner3.png"></li>
+            <li><img src="/assets/img/logo-honda.png"></li>
+            <li><img src="/assets/img/logo-toshiba.png"></li>
+            <li><img src="/assets/img/logo-lg-cns.png"></li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+<app-footer></app-footer>
